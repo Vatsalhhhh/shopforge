@@ -1,0 +1,64 @@
+# ── Web framework ────────────────────────────────────────────────
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20          # form data / file uploads
+
+# ── Database ─────────────────────────────────────────────────────
+sqlalchemy==2.0.36
+asyncpg==0.30.0                    # async PostgreSQL driver (FastAPI runtime)
+psycopg2-binary==2.9.10            # sync PostgreSQL driver (Alembic migrations)
+alembic==1.14.0
+greenlet==3.1.1                    # required by SQLAlchemy async
+
+# ── Validation / Settings ────────────────────────────────────────
+pydantic==2.10.3
+pydantic-settings==2.7.0
+pydantic[email]==2.10.3            # email validation
+
+# ── Security ─────────────────────────────────────────────────────
+bcrypt==4.2.1                      # password hashing (used directly, not via passlib)
+python-jose[cryptography]==3.3.0   # JWT
+cryptography==44.0.0
+pyotp==2.9.0                       # TOTP 2FA
+qrcode[pil]==8.0                   # QR code generation for TOTP setup
+
+# ── Redis ────────────────────────────────────────────────────────
+redis[asyncio]==5.2.1
+hiredis==3.1.0                     # C parser for redis, faster
+
+# ── Rate limiting ────────────────────────────────────────────────
+slowapi==0.1.9
+
+# ── Payments ─────────────────────────────────────────────────────
+stripe==11.4.0
+
+# ── Email ────────────────────────────────────────────────────────
+aiosmtplib==3.0.2
+jinja2==3.1.4                      # email templates
+
+# ── Storage (S3-compatible) ──────────────────────────────────────
+boto3==1.35.93
+botocore==1.35.93
+
+# ── HTTP client (inter-service, tests) ───────────────────────────
+httpx==0.28.1
+
+# ── Utilities ────────────────────────────────────────────────────
+python-slugify==8.0.4
+Pillow==11.1.0                     # image processing
+orjson==3.10.13                    # fast JSON serialization
+
+# ── Logging ──────────────────────────────────────────────────────
+structlog==24.4.0
+
+# ── Testing ──────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
+pytest-cov==6.0.0
+factory-boy==3.3.1                 # test data factories
+faker==33.1.0
+asgi-lifespan==2.1.0              # manage lifespan in tests
+
+# ── Linting / Type checking (dev only) ──────────────────────────
+ruff==0.8.4
+mypy==1.13.0

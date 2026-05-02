@@ -1,0 +1,40 @@
+# Production overrides — use alongside docker-compose.yml:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  postgres:
+    restart: always
+    ports: []                           # never expose DB port in production
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+
+  redis:
+    restart: always
+    ports: []                           # never expose Redis port in production
+    command: >
+      redis-server
+      --maxmemory 512mb
+      --maxmemory-policy allkeys-lru
+      --requirepass ${REDIS_PASSWORD:?REDIS_PASSWORD must be set}
+
+  backend:
+    restart: always
+    volumes: []                         # no source-mount in production
+    environment:
+      APP_ENV: production
+      WORKERS: "4"
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 1G
+
+  frontend:
+    restart: always
+    environment:
+      NODE_ENV: production
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M

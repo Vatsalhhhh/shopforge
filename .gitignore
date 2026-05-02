@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+backend/venv/
+backend/.venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production
+backend/.env
+frontend/.env.local
+
+# Docker volumes / data
+postgres_data/
+redis_data/
+
+# Test artifacts
+reports/
+tests/e2e/test-results/
+tests/e2e/playwright-report/
+
+# Stitch downloaded assets
+stitch/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
