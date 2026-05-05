@@ -71,6 +71,9 @@ class Order(TimestampedBase):
         "Payment", back_populates="order", uselist=False
     )
     coupon: Mapped["Coupon | None"] = relationship("Coupon")  # noqa: F821
+    inventory_reservations: Mapped[list["InventoryReservation"]] = relationship(  # noqa: F821
+        "InventoryReservation", back_populates="order", cascade="all, delete-orphan"
+    )
 
 
 class OrderItem(TimestampedBase):

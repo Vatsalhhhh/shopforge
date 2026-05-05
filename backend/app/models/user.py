@@ -62,6 +62,12 @@ class User(TimestampedBase):
     reviews: Mapped[list["Review"]] = relationship(  # noqa: F821
         "Review", back_populates="user"
     )
+    wishlist_items: Mapped[list["WishlistItem"]] = relationship(  # noqa: F821
+        "WishlistItem", back_populates="user", cascade="all, delete-orphan"
+    )
+    audit_logs: Mapped[list["AuditLog"]] = relationship(  # noqa: F821
+        "AuditLog", back_populates="user"
+    )
     vendor_memberships: Mapped[list["VendorUser"]] = relationship(  # noqa: F821
         "VendorUser", back_populates="user", foreign_keys="VendorUser.user_id"
     )

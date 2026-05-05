@@ -22,6 +22,9 @@ from app.models.payment import Payment, PaymentStatus
 from app.models.transaction import Transaction, Refund, TransactionType, TransactionStatus, RefundStatus
 from app.models.review import Review
 from app.models.coupon import Coupon, CouponUsage
+from app.models.wishlist import WishlistItem
+from app.models.audit_log import AuditLog
+from app.models.inventory_reservation import InventoryReservation, ReservationStatus
 
 __all__ = [
     "TimestampedBase",
@@ -40,4 +43,7 @@ __all__ = [
     "Transaction", "Refund", "TransactionType", "TransactionStatus", "RefundStatus",
     "Review",
     "Coupon", "CouponUsage",
+    "WishlistItem",
+    "AuditLog",
+    "InventoryReservation", "ReservationStatus",
 ]

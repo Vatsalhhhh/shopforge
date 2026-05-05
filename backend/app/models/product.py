@@ -88,6 +88,12 @@ class Product(TimestampedBase):
     cart_items: Mapped[list["CartItem"]] = relationship(  # noqa: F821
         "CartItem", back_populates="product"
     )
+    wishlist_items: Mapped[list["WishlistItem"]] = relationship(  # noqa: F821
+        "WishlistItem", back_populates="product", cascade="all, delete-orphan"
+    )
+    inventory_reservations: Mapped[list["InventoryReservation"]] = relationship(  # noqa: F821
+        "InventoryReservation", back_populates="product"
+    )
 
     @property
     def effective_price(self) -> Decimal:

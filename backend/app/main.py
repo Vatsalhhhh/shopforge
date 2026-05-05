@@ -22,6 +22,13 @@ from app.api.v1.vendor.products import router as vendor_products_router
 from app.api.v1.vendor.orders import router as vendor_orders_router
 from app.api.v1.vendor.payouts import router as vendor_payouts_router
 from app.api.v1.admin_vendors import router as admin_vendors_router
+from app.api.v1.products import router as products_router
+from app.api.v1.cart import router as cart_router
+from app.api.v1.orders import router as orders_router
+from app.api.v1.wishlist import router as wishlist_router
+from app.api.v1.search import router as search_router
+from app.api.v1.promotions import router as promotions_router
+from app.api.v1.admin_analytics import router as admin_analytics_router
 from app.core.config import settings
 from app.core.rate_limit import limiter
 from app.utils.logging import configure_logging
@@ -108,6 +115,14 @@ def create_app() -> FastAPI:
     app.include_router(health_router, prefix=API_PREFIX)
     app.include_router(auth_router,  prefix=API_PREFIX)
 
+    # ── Customer APIs ─────────────────────────────────────────────
+    app.include_router(products_router,    prefix=API_PREFIX)
+    app.include_router(cart_router,         prefix=API_PREFIX)
+    app.include_router(orders_router,       prefix=API_PREFIX)
+    app.include_router(wishlist_router,     prefix=API_PREFIX)
+    app.include_router(search_router,       prefix=API_PREFIX)
+    app.include_router(promotions_router,   prefix=API_PREFIX)
+
     # ── Vendor portal ─────────────────────────────────────────────
     app.include_router(vendor_auth_router,      prefix=API_PREFIX)
     app.include_router(vendor_profile_router,   prefix=API_PREFIX)
@@ -116,6 +131,9 @@ def create_app() -> FastAPI:
     app.include_router(vendor_orders_router,    prefix=API_PREFIX)
     app.include_router(vendor_payouts_router,   prefix=API_PREFIX)
     app.include_router(admin_vendors_router,    prefix=API_PREFIX)
+
+    # ── Admin APIs ───────────────────────────────────────────────
+    app.include_router(admin_analytics_router, prefix=API_PREFIX)
 
     # Placeholder stubs for routers built in later phases
     # They will be uncommented as each phase completes:
